@@ -2,3 +2,6 @@ __pycache__/
 test.*
 cleaning/.ipynb_checkpoints/
 .ipynb_checkpoints/
+*.json
+*.csv
+*.zip
