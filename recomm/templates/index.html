@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Search books{% endblock %}
+{% block heading %}Search books{% endblock %}
+
+{% block content %}
+
+<div class="alert alert-light" role="alert">
+    Search books
+</div>
+
+<form action="#" method="POST" onsubmit="return False">
+    <div class="form-group">
+
+        <div class="card">
+            <div class="card-body" style="padding:20px">
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <label>Title</label>
+                        <input type="text" class="form-control" name="bk_title" id="bk_t">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Author</label>
+                        <input class="form-control" type="text" name="bk_author" id="bk_a">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Publisher</label>
+                        <input class="form-control" type="text" name="bk_publisher" id="bk_p">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4" style="padding-top:20px;padding-bottom:20px">
+                        <input type="submit" class="btn btn-primary" value="Search">
+                        <a class="btn btn-light" href="http://127.0.0.1:5000/feeling-lucky" target="_blank">I'm feeling
+                            lucky </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="">
+    {% autoescape off %}
+    {{ res_exact }}
+    {% endautoescape %}
+</div>
+<div style="height: 20px;"></div>
+
+<div style="width:100%">
+    {% autoescape off %}
+    {{ res_similar }}
+    {% endautoescape %}
+</div>
+
+
+
+{% endblock %}
+
+<!-- 
+<!DOCTYPE html>
+<html>
+
+<body>
+    <form onsubmit="False" , method="post" action="#">
+        Book title: <input type="text" name="bk_title" id="bk_t">
+        Author: <input type="text" name="bk_author" id="bk_a">
+        Publisher: <input type="text" name="bk_publisher" id="bk_p">
+        <input type="submit" name="bk_sub" id="bk_s">
+    </form>
+
+
+
+    <div>
+
+        {% autoescape off %}
+        {{ res_exact }}
+        {% endautoescape %}
+
+    </div>
+
+    {% autoescape off %}
+    {{ res_similar }}
+    {% endautoescape %}
+
+    <div>
+
+
+    </div>
+</body>
+
+</html> -->

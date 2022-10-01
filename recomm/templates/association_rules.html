@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+
+{% block title %}Association rules{% endblock %}
+{% block heading %}Association Rules{% endblock %}
+
+{% block content %}
+
+<div class="alert alert-light" role="alert">
+    Select parameters and press "Submit"
+</div>
+
+<form action="#" method="post" onsubmit="return False" target="_blank">
+    <div class="form-group">
+
+        <h3>Select duration</h3>
+
+        <div class="card">
+            <div class="class-body" style="padding:20px">
+
+                <div class="form-row">
+                    <div class="col-md-3">
+                        <label>Start date</label>
+                        <input type="date" class="form-control" value="{{attrbs['start_date']}}" min="2016-05-06"
+                            max="2022-06-08" name="start_date">
+
+                    </div>
+                    <div class="col-md-3">
+                        <label>End date</label>
+
+                        <input type="date" class="form-control" value="{{attrbs['end_date']}}" min="2016-05-06"
+                            max="2022-06-08" name="end_date">
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <h3>Customize mining</h3>
+
+        <div class="card">
+            <div class="class-body" style="padding:20px">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="MinSuppCount">Minimum support count:</label>
+                        <input type=number class="form-control" id=" MinSuppCount" value="{{attrbs['min_supp_count']}}"
+                            aria-describedby="MinSupportHelp" name="min_supp_count">
+                        <!-- <small class="form-text text-muted" id="MinSupportHelp">Minimum number of transactions that should
+                                    support your rule</small> -->
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="Metric">Association rule metric</label>
+                        <select name="metric" id="Metric" class="form-control">
+                            <option selected>confidence</option>
+                            <option>lift</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="Threshold">Minimum threshold</label>
+                        <input type="number" class="form-control" value="{{attrbs['threshold']}}" min=0 step="any"
+                            name="threshold">
+                    </div>
+                </div>
+
+                <!-- <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="Save">Save results?</label>
+                        <select name="save_result" class="form-control">
+                            <option>yes</option>
+                            <option>no</option>
+                        </select>
+                    </div>
+
+                </div> -->
+
+            </div>
+        </div>
+
+        <h3>Departments</h3>
+        <div class="card">
+            <div class="class-body" style="padding:20px">
+                <input type="checkbox" value="GENERAL" name="depts" checked> GENERAL
+                <input type="checkbox" value="CS" name="depts" checked> CS
+                <input type="checkbox" value="IT" name="depts" checked> IT
+                <input type="checkbox" value="EC" name="depts" checked> EC
+                <input type="checkbox" value="ME" name="depts" checked> ME
+                <input type="checkbox" value="MECHANICAL" name="depts" checked> MECHANICAL
+                <input type="checkbox" value="INFORMATION TECHNOLOGY" name="depts" checked> INFORMATION TECHNOLOGY
+                <input type="checkbox" value="COMPUTER SCIENCE" name="depts" checked> COMPUTER SCIENCE
+                <!-- <input type="checkbox" value="MTech CSE CL" name="depts" checked> MTech CSE CL -->
+                <!-- <input type="checkbox" value="M.Tech  CSCL" name="depts" checked> M.Tech CSCL -->
+                <input type="checkbox" value="EEE" name="check" checked> EEE
+                <input type="checkbox" value="M Tech  CS CL" name="depts" checked> M Tech CS CL
+                <input type="checkbox" value="ELECTRONICS AND COMMUNICATION" name="depts" checked> ELECTRONICS AND
+                COMMUNICATION
+                <input type="checkbox" value="Ph.D" name="depts" checked> Ph.D
+                <input type="checkbox" value="PHYSICS" name="depts" checked> PHYSICS
+                <input type="checkbox" value="CE" name="depts" checked> CE
+                <input type="checkbox" value="ECONOMICS" name="depts" checked> ECONOMICS
+                <input type="checkbox" value="ELECTRICAL" name="depts" checked> ELECTRICAL
+                <!-- <input type="checkbox" value="M.Tech ME ROB" name="depts" checked> M.Tech ME ROB -->
+                <input type="checkbox" value="CENTRAL LIBRARY" name="depts" checked> CENTRAL LIBRARY
+                <input type="checkbox" value="CIVIL" name="depts" checked> CIVIL
+                <input type="checkbox" value="MATHEMATICS" name="depts" checked> MATHEMATICS
+                <input type="checkbox" value="MTech ME ROB" name="depts" checked> MTech ME ROB
+                <input type="checkbox" value="CHEMISTRY" name="depts" checked> CHEMISTRY
+                <input type="checkbox" value="nan" name="depts" checked> NaN
+
+            </div>
+        </div>
+
+
+        <h3>Columns in result</h3>
+
+        <div class="card">
+            <div class="class-body" style="padding:20px">
+                <input type="checkbox" value="antecedents" name="columns_in_result" checked> Antecedents
+                <input type="checkbox" value="consequents" name="columns_in_result" checked> Consequents
+                <input type="checkbox" value="antecedent support" name="columns_in_result" checked> Antecedent support
+                <input type="checkbox" value="consequent support" name="columns_in_result" checked> consequent support
+                <input type="checkbox" value="support" name="columns_in_result" checked> Support
+                <input type="checkbox" value="confidence" name="columns_in_result" checked> Confidence
+                <input type="checkbox" value="lift" name="columns_in_result" checked> Lift
+                <input type="checkbox" value="leverage" name="columns_in_result" checked> Leverage
+                <input type="checkbox" value="conviction" name="columns_in_result" checked> Conviction
+
+            </div>
+        </div>
+
+
+
+
+
+        <h3>Sort results by</h3>
+
+        <div class="card">
+            <div class="class-body" style="padding:20px">
+                <input type="checkbox" name="sort_results_by" checked value="confidence"> Confidence
+                <input type="checkbox" name="sort_results_by" value="lift"> Lift
+                <input type="checkbox" name="sort_results_by" value="leverage"> Leverage
+                <input type="checkbox" name="sort_results_by" value="conviction"> Conviction
+                <input type="checkbox" name="sort_results_by" value="support"> Support
+                <input type="checkbox" name="sort_results_by" value="consequent support"> Consequent support
+                <input type="checkbox" name="sort_results_by" value="antecedent support"> Antecedent support
+
+
+            </div>
+        </div>
+
+
+
+        <div style="padding-top:20px;padding-bottom:20px;">
+            <input type="submit" class="btn btn-primary">
+
+        </div>
+
+
+    </div>
+
+</form>
+
+
+{% endblock %}
+
+
+
+<h1>Association Rule Mining</h1>
+
+
+<div>
+    {{attrbs}}
+
+
+
+</div>
+
+<div>
+    {% autoescape off %}
+    {{res}}
+    {% endautoescape%}
+</div>
+</body>
+
+</html>

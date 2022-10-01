@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Mined results{% endblock %}
+{% block heading %}Results{% endblock %}
+
+{% block content %}
+
+<div class="alert alert-info" role="alert">
+    {{args}}
+</div>
+
+
+
+<div class="">
+    {% autoescape off %}
+    {{res}}
+    {% endautoescape %}
+</div>
+
+
+
+{% endblock %}
